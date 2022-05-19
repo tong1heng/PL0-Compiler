@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/compiler.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lexical_analyzer.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lexical_analyzer.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/main.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/symbol_table.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/symbol_table.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/syntax_analyzer.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/syntax_analyzer.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/word.h" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

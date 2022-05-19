@@ -1,0 +1,3 @@
+D:/Workspace/GitHub/PL0-Compiler/cmake-build-debug/CMakeFiles/myCompiler.dir
+D:/Workspace/GitHub/PL0-Compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Workspace/GitHub/PL0-Compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir

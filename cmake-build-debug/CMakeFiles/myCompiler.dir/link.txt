@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\myCompiler.dir/objects.a
+D:\Programs\Environment\TDM-GCC-64\bin\ar.exe qc CMakeFiles\myCompiler.dir/objects.a @CMakeFiles\myCompiler.dir\objects1.rsp
+D:\Programs\Environment\TDM-GCC-64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\myCompiler.dir/objects.a -Wl,--no-whole-archive -o myCompiler.exe -Wl,--out-implib,libmyCompiler.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\myCompiler.dir\linklibs.rsp

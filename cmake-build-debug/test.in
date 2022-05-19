@@ -1,0 +1,9 @@
+begin
+		if arg / i * i =    arg then
+		begin
+			ret := 0;
+			i := arg
+		end;
+		i := i + 1
+        j := i j + 2
+	end
