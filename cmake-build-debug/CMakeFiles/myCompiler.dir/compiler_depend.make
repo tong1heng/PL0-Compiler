@@ -134,7 +134,8 @@ CMakeFiles/myCompiler.dir/compiler.cpp.obj: ../compiler.cpp \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/uses_allocator.h \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/invoke.h \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_multimap.h \
-  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/erase_if.h
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/erase_if.h \
+  ../quaternary.h
 
 CMakeFiles/myCompiler.dir/lexical_analyzer.cpp.obj: ../lexical_analyzer.cpp \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iostream \
@@ -433,7 +434,125 @@ CMakeFiles/myCompiler.dir/main.cpp.obj: ../main.cpp \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/uses_allocator.h \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/invoke.h \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_multimap.h \
-  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/erase_if.h
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/erase_if.h \
+  ../quaternary.h
+
+CMakeFiles/myCompiler.dir/quaternary.cpp.obj: ../quaternary.cpp \
+  ../quaternary.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/string \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stringfwd.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/memoryfwd.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/char_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_algobase.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functexcept.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/exception_defines.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/numeric_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_pair.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/move.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/concept_check.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator_base_types.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator_base_funcs.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/debug/assertions.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ptr_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/debug/debug.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/predefined_ops.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/postypes.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cwchar \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/wchar.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/corecrt.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/vadefs.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sdks/_mingw_directx.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/swprintf.inl \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/stdint.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/crtdefs.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stddef.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/stddef.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/allocator.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/new_allocator.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/new \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/exception \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/exception.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/exception_ptr.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cxxabi_init_exception.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/typeinfo \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/hash_bytes.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/nested_exception.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/localefwd.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/clocale \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/locale.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/stdio.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iosfwd \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cctype \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/ctype.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream_insert.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cxxabi_forced.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_function.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/backward/binders.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/range_access.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/initializer_list \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_string.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/atomicity.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/pthread.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/errno.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sys/types.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/process.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/corecrt_startup.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed/limits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed/syslimits.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/limits.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/signal.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/pthread_signal.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/unistd.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/io.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/string.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/getopt.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/pthread_unistd.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sys/timeb.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/pthread_compat.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/alloc_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/alloc_traits.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/string_conversions.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdlib \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/stdlib.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/stdlib.h \
+  D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/malloc.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/std_abs.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdio \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cerrno \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functional_hash.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_string.tcc \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/vector \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_construct.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_uninitialized.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_vector.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_bvector.h \
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/vector.tcc
 
 CMakeFiles/myCompiler.dir/symbol_table.cpp.obj: ../symbol_table.cpp \
   ../symbol_table.h \
@@ -718,7 +837,8 @@ CMakeFiles/myCompiler.dir/syntax_analyzer.cpp.obj: ../syntax_analyzer.cpp \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/uses_allocator.h \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/invoke.h \
   D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_multimap.h \
-  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/erase_if.h
+  D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/erase_if.h \
+  ../quaternary.h
 
 
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
@@ -808,6 +928,8 @@ D:/Programs/Environment/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_secapi.h:
 
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/wchar.h:
+
+../quaternary.cpp:
 
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/vadefs.h:
 
@@ -906,6 +1028,8 @@ D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/errno.h:
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/sys/types.h:
 
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/process.h:
+
+../quaternary.h:
 
 D:/Programs/Environment/TDM-GCC-64/x86_64-w64-mingw32/include/corecrt_startup.h:
 

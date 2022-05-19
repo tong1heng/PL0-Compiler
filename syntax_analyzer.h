@@ -4,24 +4,8 @@
 #include "word.h"
 #include "node.h"
 #include "symbol_table.h"
+#include "quaternary.h"
 #include <string>
-
-//class TarInstruc {
-//public:
-//    std::string funcCode;
-//    int levelDiff;
-//    int displacement;
-//    std::string content;
-//    TarInstruc() {
-//        funcCode=" ";
-//        levelDiff = 0;
-//        displacement = 0;
-//        content = " ";
-//    }
-//};
-//
-//TarInstruc code[200];
-
 
 class SyntaxAnalyzer {
 public:
@@ -58,10 +42,10 @@ private:
     void WriteStatement();      //写语句
     void CompoundStatement();   //复合语句
 
-    void Expression();          //表达式
+    void Expression(std::string &ret);          //表达式
     void Condition();           //条件
-    void Item();                //项
-    void Factor();              //因子
+    void Item(std::string &ret);                //项
+    void Factor(std::string &ret);              //因子
     void AddSub();              //加减运算符
     void MulDiv();              //乘除运算符
     void Relationship();        //关系运算符
@@ -81,12 +65,7 @@ private:
     int dx;							// 在procedure和构造函数中 = 3;  and +1 when var declared
     bool smnErr;					// 语义错误
 
-    int Find(std::string str);
-    std::string Find(int *addr);
-
-    int codeIdx;
-    void codeAdd(std::string str,int lev,int place,std::string con);
-    void codeAdd(std::string str, int lev, int place);
+    Quaternary quaternary;
 
 };
 

@@ -200,6 +200,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+quaternary.obj: quaternary.cpp.obj
+.PHONY : quaternary.obj
+
+# target to build an object file
+quaternary.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/quaternary.cpp.obj
+.PHONY : quaternary.cpp.obj
+
+quaternary.i: quaternary.cpp.i
+.PHONY : quaternary.i
+
+# target to preprocess a source file
+quaternary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/quaternary.cpp.i
+.PHONY : quaternary.cpp.i
+
+quaternary.s: quaternary.cpp.s
+.PHONY : quaternary.s
+
+# target to generate assembly for a file
+quaternary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/quaternary.cpp.s
+.PHONY : quaternary.cpp.s
+
 symbol_table.obj: symbol_table.cpp.obj
 .PHONY : symbol_table.obj
 
@@ -266,6 +290,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... quaternary.obj
+	@echo ... quaternary.i
+	@echo ... quaternary.s
 	@echo ... symbol_table.obj
 	@echo ... symbol_table.i
 	@echo ... symbol_table.s

@@ -4,9 +4,6 @@
 extern Word *word;                 //识别的单词
 extern int wordIndex;              //识别的单词索引（i.e. 识别的单词数量）
 
-
-
-
 SyntaxAnalyzer::SyntaxAnalyzer() {
     ip = 0;
     cntPro = 0;
@@ -37,6 +34,7 @@ void SyntaxAnalyzer::Run() {
 
 void SyntaxAnalyzer::Show() {
     symbolTbl.PrintSymbolTable();
+    quaternary.Print();
 }
 
 void SyntaxAnalyzer::Program() {   //程序
@@ -241,7 +239,8 @@ void SyntaxAnalyzer::AssignmentStatement() {    //赋值语句
 
     if (word[ip].NAME == ":=") {
         ip++;
-        Expression();
+        std::string s;
+        Expression(s);
 
 
         int pos = symbolTbl.checkPos(tmp_id, { 2 }, cntPro);
@@ -251,7 +250,12 @@ void SyntaxAnalyzer::AssignmentStatement() {    //赋值语句
 
         SymbolNode sym = symbolTbl.getNode(pos);
         // Todo: emit 四元式
-
+//        std::string s = quaternary.NewTemp();
+//        Code code;
+//        code.op = "=";
+//        code.arg1 = "";
+//
+//        quaternary.emit(code);
     }
     else {
         synErr = true;
@@ -442,66 +446,94 @@ void SyntaxAnalyzer::CompoundStatement() {  //复合语句
     }
 }
 
-void SyntaxAnalyzer::Expression() { //表达式
+void SyntaxAnalyzer::Expression(std::string &ret) { //表达式
+    bool isMinus = false;
+    Code code;
+
     if (word[ip].NAME == "+" || word[ip].NAME == "-") {
+        isMinus = true;         //取负的"-"
         ip++;
     }
-    Item();
 
-    //Todo: 获取表达式符号 emit四元式
+    Item(code.arg1);
+//    ret = code.arg1;
+
+    // 如果取负 emit四元式
+    if(isMinus) {   //取负
+        code.arg2 = "-";
+        code.op = "uminus"; // uminus 和 - 进行区分
+        code.result = quaternary.NewTemp();
+        quaternary.emit(code);
+        code.arg1 = code.result;
+    }
 
     while (word[ip].NAME == "+" || word[ip].NAME == "-") {
+        code.op = word[ip].NAME;
         AddSub();
-        Item();
+        Item(code.arg2);
 
-        //Todo: 获取表达式符号 emit四元式
-
+        //获取表达式符号 emit四元式
+        code.result = quaternary.NewTemp();
+        quaternary.emit(code);
+        //Todo: arg1=result; return arg1
+        code.arg1 = code.result;
     }
+    ret = code.arg1;
 }
 
 void SyntaxAnalyzer::Condition() { //条件
     if (word[ip].NAME == "odd") {
         ip++;
-        Expression();
+        std::string s;
+        Expression(s);
         //Todo: emit和odd相关的四元式
     }
     else {
-        Expression();
+        std::string s;
+        Expression(s);
         Relationship();
-        Expression();
+        Expression(s);
 
         //Todo: 根据关系运算符emit四元式 需要获取Relationship()识别的运算符
     }
 }
 
-void SyntaxAnalyzer::Item() {   //项
-    Factor();
-    while (word[ip].NAME=="*"|| word[ip].NAME == "/") {
+void SyntaxAnalyzer::Item(std::string &ret) {   //项
+    Code code;
+
+    Factor(code.arg1);
+//    ret = code.arg1;
+
+    while (word[ip].NAME == "*" || word[ip].NAME == "/") {  // Todo:除数为0的报错
+        // 获取 * or /  emit四元式
+        code.op = word[ip].NAME;
         MulDiv();
-        Factor();
-
-        //Todo: 获取 * or / 符号 emit四元式
-
+        Factor(code.arg2);
+        code.result = quaternary.NewTemp();
+        quaternary.emit(code);
+        //
+        code.arg1 = code.result;
     }
+    ret = code.arg1;
 }
 
-void SyntaxAnalyzer::Factor() { //因子
+void SyntaxAnalyzer::Factor(std::string &ret) { //因子
     if ((word[ip].NAME.at(0) <= 122 && word[ip].NAME.at(0) >= 97)) { //标识符
 //    if (word[ip].NAME == "IDENT") { //标识符
         std::string tmp_id;
         Identifier(tmp_id);
         //Todo: 四元式
-
+        ret = tmp_id;
     }
     else if ((word[ip].NAME.at(0) <= 57 && word[ip].NAME.at(0) >= 48)) { //无符号整数
 //    else if(word[ip].NAME == "NUMBER") { //无符号整数
         int tmp_num;
         UnsignedInt(tmp_num);
         //Todo: 四元式
-
+        ret = std::to_string(tmp_num);
     }
     else if (word[ip].NAME == "(") {
-        Expression();
+        Expression(ret);
         if (word[ip].NAME == ")")   ip++;
         else {
             synErr = true;
@@ -536,21 +568,3 @@ void SyntaxAnalyzer::Relationship() {   //关系运算符
 }
 
 
-
-
-
-////添加code，运算类型
-//void SyntaxAnalyzer::codeAdd(std::string str,int lev,int place,std::string con) {
-//    code[codeIdx].funcCode = str;
-//    code[codeIdx].levelDiff = lev;
-//    code[codeIdx].displacement = place;
-//    code[codeIdx].content = con;
-//    codeIdx++;
-//}
-////添加code，非运算
-//void SyntaxAnalyzer::codeAdd(std::string str, int lev, int place) {
-//    code[codeIdx].funcCode = str;
-//    code[codeIdx].levelDiff = lev;
-//    code[codeIdx].displacement = place;
-//    codeIdx++;
-//}
