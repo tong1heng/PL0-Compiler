@@ -44,3 +44,7 @@ void Quaternary::Print() {
 //        printf("%s\t%s\t%s\t%s\n", c.op.c_str(), c.arg1.c_str(), c.arg2.c_str(), c.result.c_str());
 //    }
 }
+
+int Quaternary::GetOffset() {
+    return offset;
+}

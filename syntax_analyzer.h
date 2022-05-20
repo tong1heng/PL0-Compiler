@@ -22,7 +22,7 @@ private:
     int ip;
 
     void Program();             //程序
-    void SubProgram();          //子程序
+    void SubProgram(int px);          //子程序
 
     void ConstDeclare();        //常量说明部分
     void VarDeclare();          //变量说明部分

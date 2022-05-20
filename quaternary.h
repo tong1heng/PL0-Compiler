@@ -21,6 +21,7 @@ public:
     int NextCodeId();                   //返回将要产生但尚未产生的四元式地址
     void BackPatch(int idx, int res);   //回填
     void Print();
+    int GetOffset();
 
 private:
     std::vector<Code> interCode;

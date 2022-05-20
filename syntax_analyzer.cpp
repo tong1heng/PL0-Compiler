@@ -38,7 +38,7 @@ void SyntaxAnalyzer::Show() {
 }
 
 void SyntaxAnalyzer::Program() {   //程序
-    SubProgram();
+    SubProgram(-1);
 
     if (word[ip].NAME == ".") {
         ip++;
@@ -51,16 +51,40 @@ void SyntaxAnalyzer::Program() {   //程序
     }
 }
 
-void SyntaxAnalyzer::SubProgram() {
+void SyntaxAnalyzer::SubProgram(int px) { //px标识当前子程序的过程名p在符号表中的位置下标；-1标识main
+    int nxq = quaternary.NextCodeId();
+    if(px == -1) {
+        Code code;
+        code.op = "j";
+        code.arg1 = "-";
+        code.arg2 = "-";
+        code.result = "";   //等待反填
+        quaternary.emit(code);
+    }
+
     dx = 3;
 
     if (word[ip].NAME == "const") ConstDeclare();           //常量说明部分
     if (word[ip].NAME == "var") VarDeclare();               //变量说明部分
     if (word[ip].NAME == "procedure") ProcedureDeclare();   //过程说明部分
+
+    //Done: emit四元式
+    if(px == -1) {  //子程序main，反填第一条jmp语句
+        quaternary.BackPatch(nxq, quaternary.NextCodeId());
+    }
+    else {  //非main子程序，反填符号表中的位置
+        symbolTbl.setPara2(px, quaternary.NextCodeId() + quaternary.GetOffset());
+    }
+
     Statement();                                            //语句
 
-    //Todo: emit 四元式
-
+    //Done: emit return code after each procedure
+    Code retCode;
+    retCode.op = "ret";
+    retCode.arg1 = "-";
+    retCode.arg2 = "-";
+    retCode.result = "-";
+    quaternary.emit(retCode);
 }
 
 void SyntaxAnalyzer::ConstDeclare() {   //常量说明部分
@@ -132,7 +156,8 @@ void SyntaxAnalyzer::ProcedureDeclare() {   //过程说明部分
     }
 
     ProcedureHead();
-    SubProgram();
+    int pos = symbolTbl.getSize() - 1;	// 当前procedure标识符在符号表中的位置
+    SubProgram(pos);
 
     if (word[ip].NAME == ";") {
         cntPro--;       // 分号完成一层
