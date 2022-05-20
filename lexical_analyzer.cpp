@@ -31,7 +31,6 @@ LexicalAnalyzer::LexicalAnalyzer() {
 }
 
 LexicalAnalyzer::~LexicalAnalyzer() {
-    delete word;
     for(int i = 0; i < 7; i++) {
         delete state[i];
     }

@@ -1,6 +1,7 @@
 #ifndef MYCOMPILER_SYMBOL_TABLE_H
 #define MYCOMPILER_SYMBOL_TABLE_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <map>

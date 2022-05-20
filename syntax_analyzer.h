@@ -43,12 +43,12 @@ private:
     void CompoundStatement();   //复合语句
 
     void Expression(std::string &ret);          //表达式
-    void Condition();           //条件
+    void Condition(Code &code);           //条件
     void Item(std::string &ret);                //项
     void Factor(std::string &ret);              //因子
     void AddSub();              //加减运算符
     void MulDiv();              //乘除运算符
-    void Relationship();        //关系运算符
+    void Relationship(std::string &ret);        //关系运算符
 
     /* semantic analysis */
 

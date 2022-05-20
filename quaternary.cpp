@@ -25,10 +25,17 @@ std::string Quaternary::NewTemp() {
     return s;
 }
 
+int Quaternary::NextCodeId() {
+    return interCode.size();
+}
+
+void Quaternary::BackPatch(int idx, int res) {
+    interCode[idx].result = std::to_string(res + offset);
+}
+
 void Quaternary::Print() {
 //    printf("op\targ1\targ2\tresult\n");
-    printf("ËÄÔªÊ½");
-    printf("====================================================\n");
+    printf("Quaternary codes are as follows:\n");
     for(int i = 0; i < interCode.size(); i++) {
         printf("(%d) (%s, %s, %s, %s)\n", i+offset, interCode[i].op.c_str(), interCode[i].arg1.c_str(),
                                                     interCode[i].arg2.c_str(), interCode[i].result.c_str());

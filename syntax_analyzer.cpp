@@ -19,7 +19,7 @@ SyntaxAnalyzer::~SyntaxAnalyzer() {
 
 void SyntaxAnalyzer::Run() {
     Program();
-    std::cout << "====================================================\n";
+    std::cout << "\n========================================\n";
     if(synErr) {
         std::cout << "syntax analysis error!!!\n";
     }
@@ -29,7 +29,7 @@ void SyntaxAnalyzer::Run() {
     else {
         std::cout << "syntax and semantic analysis success!!!\n";
     }
-    std::cout << "====================================================\n";
+    std::cout << "========================================\n\n";
 }
 
 void SyntaxAnalyzer::Show() {
@@ -94,7 +94,10 @@ void SyntaxAnalyzer::VarDeclare() { //变量说明语句
         Identifier(snode.name);
         snode.para2 = dx++;												// para2: adr
         bool res = symbolTbl.insert(snode, cntPro);				// insert to the table
-        if (!res)   smnErr = true;
+        if (!res) {
+            smnErr = true;
+            return ;
+        }
 
         while (word[ip].NAME == ",") {
             ip++;
@@ -102,7 +105,10 @@ void SyntaxAnalyzer::VarDeclare() { //变量说明语句
             Identifier(snode.name);
             snode.para2 = dx++;											// para2: adr
             bool res = symbolTbl.insert(snode, cntPro);			// insert to the table
-            if (!res)   smnErr = true;
+            if (!res) {
+                smnErr = true;
+                return ;
+            }
         }
         if (word[ip].NAME == ";")
             ip++;
@@ -122,6 +128,7 @@ void SyntaxAnalyzer::ProcedureDeclare() {   //过程说明部分
     if (cntPro > 3) {   // 不大于3层procedure
         smnErr = true;
         std::cout << "procedure depth out of 3\n";
+        return ;
     }
 
     ProcedureHead();
@@ -159,16 +166,19 @@ void SyntaxAnalyzer::Statement() {  //语句
 }
 
 void SyntaxAnalyzer::ConstDefine() {    //常量定义
-    SymbolNode snode;													// snode: record symbol
-    snode.kind = "CONSTANT";											// kind
-    Identifier(snode.name);                                         // name
+    SymbolNode snode;												// snode: record symbol
+    snode.kind = "CONSTANT";										// kind
+    Identifier(snode.name);                                     // name
 
     if (word[ip].NAME == "=") {
         ip++;
-        UnsignedInt(snode.para1);                                   // para1: val
-        snode.para2 = cntPro;                                           // para1: level
-        bool res = symbolTbl.insert(snode, cntPro);				// insert to the table
-        if (!res)   smnErr = true;
+        UnsignedInt(snode.para1);                               // para1: val
+        snode.para2 = cntPro;                                       // para1: level
+        bool res = symbolTbl.insert(snode, cntPro);	        // insert to the table
+        if (!res) {
+            smnErr = true;
+            return ;
+        }
     }
     else {
         synErr = true;
@@ -211,14 +221,17 @@ void SyntaxAnalyzer::ProcedureHead() {  //过程首部
     if (word[ip].NAME == "procedure") {
         ip++;
 
-        SymbolNode snode;													// snode: record symbol
-        snode.kind = "PROCEDURE";											// kind
-        Identifier(snode.name);										    // name
-        snode.para1 = cntPro - 1;											// para1: LEVEL=cntPro-1 因为上一个判断已经提前层数+1，但是这个过程名属于上一层
-        snode.para2 = 0;													// para2: 0 indicates it doesn't have addr yet.
+        SymbolNode snode;											// snode: record symbol
+        snode.kind = "PROCEDURE";									// kind
+        Identifier(snode.name);								    // name
+        snode.para1 = cntPro - 1;									// para1: LEVEL=cntPro-1 因为上一个判断已经提前层数+1，但是这个过程名属于上一层
+        snode.para2 = 0;											// para2: 0 indicates it doesn't have addr yet.
 
-        bool res =symbolTbl.insert(snode, cntPro);					// insert to the table
-        if (!res)   smnErr = true;
+        bool res =symbolTbl.insert(snode, cntPro);			// insert to the table
+        if (!res) {
+            smnErr = true;
+            return ;
+        }
 
         if (word[ip].NAME == ";")
             ip++;
@@ -235,27 +248,26 @@ void SyntaxAnalyzer::ProcedureHead() {  //过程首部
 
 void SyntaxAnalyzer::AssignmentStatement() {    //赋值语句
     std::string tmp_id;
+    Code code;
+
     Identifier(tmp_id);
 
     if (word[ip].NAME == ":=") {
         ip++;
-        std::string s;
-        Expression(s);
-
+        code.op = "=";
+        Expression(code.arg1);
 
         int pos = symbolTbl.checkPos(tmp_id, { 2 }, cntPro);
         if (pos < 0) {
             smnErr = true;
+            return ;
         }
 
+        // Done: emit 四元式
         SymbolNode sym = symbolTbl.getNode(pos);
-        // Todo: emit 四元式
-//        std::string s = quaternary.NewTemp();
-//        Code code;
-//        code.op = "=";
-//        code.arg1 = "";
-//
-//        quaternary.emit(code);
+        code.arg2 = "-";
+        code.result = sym.name;
+        quaternary.emit(code);
     }
     else {
         synErr = true;
@@ -266,15 +278,27 @@ void SyntaxAnalyzer::AssignmentStatement() {    //赋值语句
 void SyntaxAnalyzer::ConditionStatement() { //条件语句
     if (word[ip].NAME == "if") {
         ip++;
-        Condition();
 
-        // Todo: emit 四元式 下方statement之后反填
+        Code trueCode, falseCode;
+        Condition(trueCode);
+        falseCode.op = "j";
+        falseCode.arg1 = "-";
+        falseCode.arg2 = "-";
+        // Done: emit 四元式 下方statement反填
+        int tnxq = quaternary.NextCodeId();
+        quaternary.emit(trueCode);
+        int fnxq = quaternary.NextCodeId();
+        quaternary.emit(falseCode);
 
         if (word[ip].NAME == "then") {
             ip++;
+
+            // Done: 反填真出口
+            quaternary.BackPatch(tnxq, quaternary.NextCodeId());
             Statement();
 
-            // Todo: 反填
+            // Done: 反填假出口
+            quaternary.BackPatch(fnxq,quaternary.NextCodeId());
         }
         else {
             synErr = true;
@@ -290,15 +314,28 @@ void SyntaxAnalyzer::ConditionStatement() { //条件语句
 void SyntaxAnalyzer::DoWhileStatement() {    //当型循环语句
     if (word[ip].NAME == "while") {
         ip++;
-        Condition();
 
-        // Todo: emit四元式，下方反填
+        Code trueCode, falseCode;
+        Condition(trueCode);
+        falseCode.op = "j";
+        falseCode.arg1 = "-";
+        falseCode.arg2 = "-";
+
+        // Done: emit四元式，下方statement反填
+        int tnxq = quaternary.NextCodeId();
+        quaternary.emit(trueCode);
+        int fnxq = quaternary.NextCodeId();
+        quaternary.emit(falseCode);
 
         if (word[ip].NAME == "do") {
             ip++;
+
+            // Done: 反填真出口
+            quaternary.BackPatch(tnxq, quaternary.NextCodeId());
             Statement();
 
-            // Todo: 反填
+            // Done: 反填假出口
+            quaternary.BackPatch(fnxq,quaternary.NextCodeId());
         }
         else {
             synErr = true;
@@ -319,11 +356,19 @@ void SyntaxAnalyzer::CallStatement() {    //过程调用语句
         Identifier(tmp_id);
 
         int pos = symbolTbl.checkPos(tmp_id, { 3 }, cntPro);
-        if (pos < 0)    smnErr = true;
+        if (pos < 0) {
+            smnErr = true;
+            return ;
+        }
 
-        // Todo: 四元式和反填
+        // Done: emit四元式
         SymbolNode tmp_n = symbolTbl.getNode(pos);
-
+        Code code;
+        code.op = "call";
+        code.arg1 = "-";
+        code.arg2 = "-";
+        code.result = tmp_n.name;
+        quaternary.emit(code);
     }
     else {
         synErr = true;
@@ -343,10 +388,17 @@ void SyntaxAnalyzer::ReadStatement() {  //读语句
             int pos = symbolTbl.checkPos(tmp_id, { 2 }, cntPro);
             if (pos < 0) {
                 smnErr = true;
+                return ;
             }
-            SymbolNode tmp_n = symbolTbl.getNode(pos);
-            // Todo: emit 四元式
 
+            SymbolNode tmp_n = symbolTbl.getNode(pos);
+            // Done: emit 四元式
+            Code code;
+            code.op = "read";
+            code.arg1 = "-";
+            code.arg2 = "-";
+            code.result = tmp_n.name;
+            quaternary.emit(code);
 
             while (word[ip].NAME == ",") {
                 ip++;
@@ -357,9 +409,17 @@ void SyntaxAnalyzer::ReadStatement() {  //读语句
                 int tpos = symbolTbl.checkPos(temp_id, { 2 }, cntPro);
                 if (tpos < 0) {
                     smnErr = true;
+                    return ;
                 }
+
                 SymbolNode temp_n = symbolTbl.getNode(tpos);
-                // Todo: emit 四元式
+                // Done: emit 四元式
+                Code tcode;
+                tcode.op = "read";
+                tcode.arg1 = "-";
+                tcode.arg2 = "-";
+                tcode.result = temp_n.name;
+                quaternary.emit(tcode);
 
             }
             if (word[ip].NAME == ")")   ip++;
@@ -391,9 +451,17 @@ void SyntaxAnalyzer::WriteStatement() { //写语句
             int pos = symbolTbl.checkPos(tmp_id, { 1, 2 }, cntPro);
             if (pos < 0) {
                 smnErr = true;
+                return ;
             }
+
             SymbolNode tmp_n = symbolTbl.getNode(pos);
-            // Todo: emit 四元式
+            // Done: emit 四元式
+            Code code;
+            code.op = "write";
+            code.arg1 = "-";
+            code.arg2 = "-";
+            code.result = tmp_n.name;
+            quaternary.emit(code);
 
             while (word[ip].NAME == ",") {
                 ip++;
@@ -404,10 +472,17 @@ void SyntaxAnalyzer::WriteStatement() { //写语句
                 int tpos = symbolTbl.checkPos(temp_id, { 1, 2 }, cntPro);
                 if (tpos < 0) {
                     smnErr = true;
+                    return ;
                 }
-                SymbolNode temp_n = symbolTbl.getNode(tpos);
-                // Todo: emit 四元式
 
+                SymbolNode temp_n = symbolTbl.getNode(tpos);
+                // Done: emit 四元式
+                Code tcode;
+                tcode.op = "write";
+                tcode.arg1 = "-";
+                tcode.arg2 = "-";
+                tcode.result = temp_n.name;
+                quaternary.emit(tcode);
             }
             if (word[ip].NAME == ")")   ip++;
             else {
@@ -458,7 +533,7 @@ void SyntaxAnalyzer::Expression(std::string &ret) { //表达式
     Item(code.arg1);
 //    ret = code.arg1;
 
-    // 如果取负 emit四元式
+    //Done: 如果取负 emit四元式
     if(isMinus) {   //取负
         code.arg2 = "-";
         code.op = "uminus"; // uminus 和 - 进行区分
@@ -472,29 +547,26 @@ void SyntaxAnalyzer::Expression(std::string &ret) { //表达式
         AddSub();
         Item(code.arg2);
 
-        //获取表达式符号 emit四元式
+        //Done: 获取表达式符号 emit四元式
         code.result = quaternary.NewTemp();
         quaternary.emit(code);
-        //Todo: arg1=result; return arg1
         code.arg1 = code.result;
     }
     ret = code.arg1;
 }
 
-void SyntaxAnalyzer::Condition() { //条件
+void SyntaxAnalyzer::Condition(Code &code) { //条件
     if (word[ip].NAME == "odd") {
         ip++;
-        std::string s;
-        Expression(s);
-        //Todo: emit和odd相关的四元式
+        Expression(code.arg1);
+        //Done: emit和odd相关的四元式
+        code.op = "odd";
     }
     else {
-        std::string s;
-        Expression(s);
-        Relationship();
-        Expression(s);
-
-        //Todo: 根据关系运算符emit四元式 需要获取Relationship()识别的运算符
+        Expression(code.arg1);
+        Relationship(code.op);
+        Expression(code.arg2);
+        //Done: 根据关系运算符emit四元式 需要获取Relationship()识别的运算符
     }
 }
 
@@ -504,14 +576,13 @@ void SyntaxAnalyzer::Item(std::string &ret) {   //项
     Factor(code.arg1);
 //    ret = code.arg1;
 
-    while (word[ip].NAME == "*" || word[ip].NAME == "/") {  // Todo:除数为0的报错
-        // 获取 * or /  emit四元式
+    while (word[ip].NAME == "*" || word[ip].NAME == "/") {
+        //Done: 获取乘除号 emit四元式
         code.op = word[ip].NAME;
         MulDiv();
         Factor(code.arg2);
         code.result = quaternary.NewTemp();
         quaternary.emit(code);
-        //
         code.arg1 = code.result;
     }
     ret = code.arg1;
@@ -522,14 +593,14 @@ void SyntaxAnalyzer::Factor(std::string &ret) { //因子
 //    if (word[ip].NAME == "IDENT") { //标识符
         std::string tmp_id;
         Identifier(tmp_id);
-        //Todo: 四元式
+        //Done: 四元式
         ret = tmp_id;
     }
     else if ((word[ip].NAME.at(0) <= 57 && word[ip].NAME.at(0) >= 48)) { //无符号整数
 //    else if(word[ip].NAME == "NUMBER") { //无符号整数
         int tmp_num;
         UnsignedInt(tmp_num);
-        //Todo: 四元式
+        //Done: 四元式
         ret = std::to_string(tmp_num);
     }
     else if (word[ip].NAME == "(") {
@@ -556,9 +627,10 @@ void SyntaxAnalyzer::MulDiv() {   //乘除运算符
     else    std::cout << "syntax error in MulDiv\n";
 }
 
-void SyntaxAnalyzer::Relationship() {   //关系运算符
+void SyntaxAnalyzer::Relationship(std::string &ret) {   //关系运算符
     if (word[ip].NAME == "=" || word[ip].NAME == "#" || word[ip].NAME=="<" ||
         word[ip].NAME == "<=" ||word[ip].NAME == ">" || word[ip].NAME == ">=") {
+        ret = "j" + word[ip].NAME;
         ip++;
     }
     else {

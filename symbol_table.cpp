@@ -47,9 +47,12 @@ bool SymbolTable::insert(SymbolNode n, int lev) {  // check¸ß²ã´ÎÊÇ·ñ Í¬Ãû ²»Í¬À
 }
 
 void SymbolTable::PrintSymbolTable() {
-    printf("Name\tKind\tPara1\tPara2\n");
-    printf("====================================================\n");
+    std::cout << "©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\n";
+    printf("Name\t\tKind\t\tPara1\t\tPara2\n");
+    std::cout << "©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\n";
+//    printf("====================================================\n");
     for (SymbolNode node : symbolTbl) {
-        printf("%s\t%s\t%d\t%d\n", node.name.c_str(), node.kind.c_str(), node.para1, node.para2);
+        printf("%s\t\t%s\t\t%d\t\t%d\n", node.name.c_str(), node.kind.c_str(), node.para1, node.para2);
     }
+    std::cout << "©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\n";
 }

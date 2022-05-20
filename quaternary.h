@@ -17,12 +17,14 @@ public:
     ~Quaternary();
 
     void emit(Code &c);
-    std::string NewTemp();      //产生新变量名T1,T2等
+    std::string NewTemp();              //产生编译过程中的临时变量名T1,T2等
+    int NextCodeId();                   //返回将要产生但尚未产生的四元式地址
+    void BackPatch(int idx, int res);   //回填
     void Print();
 
 private:
     std::vector<Code> interCode;
-    int tempId;
+    int tempId;                         //临时变量的序号
     std::vector<std::string> digits;
     int offset;
 };
