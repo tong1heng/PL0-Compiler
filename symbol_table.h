@@ -14,7 +14,7 @@ struct SymbolNode {
         para2 = 0;
     }
     SymbolNode(std::string &n, std::string &k, int p1, int p2)
-        :name(n), kind(k), para1(p1), para2(p2) {}
+        : name(n), kind(k), para1(p1), para2(p2) {}
     bool operator == (SymbolNode &b) const {
         if (this->name == b.name && this->kind == b.kind)
             return true;
@@ -25,31 +25,19 @@ struct SymbolNode {
 
 class SymbolTable {
 public:
-    SymbolTable(){
-        mp = {
-                {1, "CONSTANT"},
-                {2, "VARIABLE"},
-                {3, "PROCEDURE"}
-        };
-        valid = true;
-    }
-    bool insert(SymbolNode n, int lev);
-    int checkPos(std::string name, std::vector<int> kind, int lev);
-    SymbolNode getNode(int i) { return symbolTbl[i]; }
-    int getSize() { return symbolTbl.size(); }
-    bool setPara2(int pos, int val) {
-        if (pos >= symbolTbl.size()) return false;
-        symbolTbl[pos].para2 = val;
-        return true;
-    }
+    SymbolTable();
+    ~SymbolTable();
 
-    // for test;
+    bool Insert(SymbolNode n, int lev);                             // 在符号表中插入一个符号
+    int CheckPos(std::string name, std::vector<int> kind, int lev); // 检查符号表低于lev的层次有无kind类的符号name
+    SymbolNode GetNode(int i);
+    int GetSize();
+    bool SetPara2(int pos, int val);
     void PrintSymbolTable();
 
 private:
     std::map<int, std::string> mp;
-    std::vector<SymbolNode> symbolTbl;	// 符号表
-    bool valid;
+    std::vector<SymbolNode> table;	// 符号表
 };
 
 

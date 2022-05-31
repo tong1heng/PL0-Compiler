@@ -88,6 +88,12 @@
 		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/compiler.h">
 			<Option target="myCompiler"/>
 		</Unit>
+		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/interpreter.cpp">
+			<Option target="myCompiler"/>
+		</Unit>
+		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/interpreter.h">
+			<Option target="myCompiler"/>
+		</Unit>
 		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/lexical_analyzer.cpp">
 			<Option target="myCompiler"/>
 		</Unit>
@@ -116,6 +122,12 @@
 			<Option target="myCompiler"/>
 		</Unit>
 		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/syntax_analyzer.h">
+			<Option target="myCompiler"/>
+		</Unit>
+		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/target_code.cpp">
+			<Option target="myCompiler"/>
+		</Unit>
+		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/target_code.h">
 			<Option target="myCompiler"/>
 		</Unit>
 		<Unit filename="D:/Workspace/GitHub/PL0-Compiler/word.h">

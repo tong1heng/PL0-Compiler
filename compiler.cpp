@@ -1,7 +1,7 @@
 #include "compiler.h"
 
-Compiler::Compiler() {
-    LA = new LexicalAnalyzer();
+Compiler::Compiler(std::string& in) {
+    LA = new LexicalAnalyzer(in);
     SA = new SyntaxAnalyzer();
 }
 
@@ -16,6 +16,11 @@ void Compiler::LexicalAnalysis() {
 }
 
 void Compiler::SyntaxAnalysis() {
+    SA->SetWord(LA->GetWord());
     SA->Run();
     SA->Show();
+}
+
+std::vector<TargetCodeNode> &Compiler::GetTargetCode() {
+    return SA->GetTargetCode();
 }

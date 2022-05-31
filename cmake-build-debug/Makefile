@@ -152,6 +152,30 @@ compiler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/compiler.cpp.s
 .PHONY : compiler.cpp.s
 
+interpreter.obj: interpreter.cpp.obj
+.PHONY : interpreter.obj
+
+# target to build an object file
+interpreter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/interpreter.cpp.obj
+.PHONY : interpreter.cpp.obj
+
+interpreter.i: interpreter.cpp.i
+.PHONY : interpreter.i
+
+# target to preprocess a source file
+interpreter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/interpreter.cpp.i
+.PHONY : interpreter.cpp.i
+
+interpreter.s: interpreter.cpp.s
+.PHONY : interpreter.s
+
+# target to generate assembly for a file
+interpreter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/interpreter.cpp.s
+.PHONY : interpreter.cpp.s
+
 lexical_analyzer.obj: lexical_analyzer.cpp.obj
 .PHONY : lexical_analyzer.obj
 
@@ -272,6 +296,30 @@ syntax_analyzer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/syntax_analyzer.cpp.s
 .PHONY : syntax_analyzer.cpp.s
 
+target_code.obj: target_code.cpp.obj
+.PHONY : target_code.obj
+
+# target to build an object file
+target_code.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/target_code.cpp.obj
+.PHONY : target_code.cpp.obj
+
+target_code.i: target_code.cpp.i
+.PHONY : target_code.i
+
+# target to preprocess a source file
+target_code.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/target_code.cpp.i
+.PHONY : target_code.cpp.i
+
+target_code.s: target_code.cpp.s
+.PHONY : target_code.s
+
+# target to generate assembly for a file
+target_code.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myCompiler.dir\build.make CMakeFiles/myCompiler.dir/target_code.cpp.s
+.PHONY : target_code.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -284,6 +332,9 @@ help:
 	@echo ... compiler.obj
 	@echo ... compiler.i
 	@echo ... compiler.s
+	@echo ... interpreter.obj
+	@echo ... interpreter.i
+	@echo ... interpreter.s
 	@echo ... lexical_analyzer.obj
 	@echo ... lexical_analyzer.i
 	@echo ... lexical_analyzer.s
@@ -299,6 +350,9 @@ help:
 	@echo ... syntax_analyzer.obj
 	@echo ... syntax_analyzer.i
 	@echo ... syntax_analyzer.s
+	@echo ... target_code.obj
+	@echo ... target_code.i
+	@echo ... target_code.s
 .PHONY : help
 
 

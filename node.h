@@ -5,7 +5,7 @@
 #include <vector>
 
 /* Syntax Tree */
-class Node {
+struct Node {
     std::string val;
     std::vector<Node*> children;
 

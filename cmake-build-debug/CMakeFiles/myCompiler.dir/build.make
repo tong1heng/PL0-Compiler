@@ -152,6 +152,34 @@ CMakeFiles/myCompiler.dir/quaternary.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myCompiler.dir/quaternary.cpp.s"
 	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Workspace\GitHub\PL0-Compiler\quaternary.cpp -o CMakeFiles\myCompiler.dir\quaternary.cpp.s
 
+CMakeFiles/myCompiler.dir/target_code.cpp.obj: CMakeFiles/myCompiler.dir/flags.make
+CMakeFiles/myCompiler.dir/target_code.cpp.obj: ../target_code.cpp
+CMakeFiles/myCompiler.dir/target_code.cpp.obj: CMakeFiles/myCompiler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Workspace\GitHub\PL0-Compiler\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/myCompiler.dir/target_code.cpp.obj"
+	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/myCompiler.dir/target_code.cpp.obj -MF CMakeFiles\myCompiler.dir\target_code.cpp.obj.d -o CMakeFiles\myCompiler.dir\target_code.cpp.obj -c D:\Workspace\GitHub\PL0-Compiler\target_code.cpp
+
+CMakeFiles/myCompiler.dir/target_code.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myCompiler.dir/target_code.cpp.i"
+	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Workspace\GitHub\PL0-Compiler\target_code.cpp > CMakeFiles\myCompiler.dir\target_code.cpp.i
+
+CMakeFiles/myCompiler.dir/target_code.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myCompiler.dir/target_code.cpp.s"
+	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Workspace\GitHub\PL0-Compiler\target_code.cpp -o CMakeFiles\myCompiler.dir\target_code.cpp.s
+
+CMakeFiles/myCompiler.dir/interpreter.cpp.obj: CMakeFiles/myCompiler.dir/flags.make
+CMakeFiles/myCompiler.dir/interpreter.cpp.obj: ../interpreter.cpp
+CMakeFiles/myCompiler.dir/interpreter.cpp.obj: CMakeFiles/myCompiler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Workspace\GitHub\PL0-Compiler\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/myCompiler.dir/interpreter.cpp.obj"
+	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/myCompiler.dir/interpreter.cpp.obj -MF CMakeFiles\myCompiler.dir\interpreter.cpp.obj.d -o CMakeFiles\myCompiler.dir\interpreter.cpp.obj -c D:\Workspace\GitHub\PL0-Compiler\interpreter.cpp
+
+CMakeFiles/myCompiler.dir/interpreter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myCompiler.dir/interpreter.cpp.i"
+	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Workspace\GitHub\PL0-Compiler\interpreter.cpp > CMakeFiles\myCompiler.dir\interpreter.cpp.i
+
+CMakeFiles/myCompiler.dir/interpreter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myCompiler.dir/interpreter.cpp.s"
+	D:\Programs\Environment\TDM-GCC-64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Workspace\GitHub\PL0-Compiler\interpreter.cpp -o CMakeFiles\myCompiler.dir\interpreter.cpp.s
+
 # Object files for target myCompiler
 myCompiler_OBJECTS = \
 "CMakeFiles/myCompiler.dir/main.cpp.obj" \
@@ -159,7 +187,9 @@ myCompiler_OBJECTS = \
 "CMakeFiles/myCompiler.dir/lexical_analyzer.cpp.obj" \
 "CMakeFiles/myCompiler.dir/syntax_analyzer.cpp.obj" \
 "CMakeFiles/myCompiler.dir/symbol_table.cpp.obj" \
-"CMakeFiles/myCompiler.dir/quaternary.cpp.obj"
+"CMakeFiles/myCompiler.dir/quaternary.cpp.obj" \
+"CMakeFiles/myCompiler.dir/target_code.cpp.obj" \
+"CMakeFiles/myCompiler.dir/interpreter.cpp.obj"
 
 # External object files for target myCompiler
 myCompiler_EXTERNAL_OBJECTS =
@@ -170,11 +200,13 @@ myCompiler.exe: CMakeFiles/myCompiler.dir/lexical_analyzer.cpp.obj
 myCompiler.exe: CMakeFiles/myCompiler.dir/syntax_analyzer.cpp.obj
 myCompiler.exe: CMakeFiles/myCompiler.dir/symbol_table.cpp.obj
 myCompiler.exe: CMakeFiles/myCompiler.dir/quaternary.cpp.obj
+myCompiler.exe: CMakeFiles/myCompiler.dir/target_code.cpp.obj
+myCompiler.exe: CMakeFiles/myCompiler.dir/interpreter.cpp.obj
 myCompiler.exe: CMakeFiles/myCompiler.dir/build.make
 myCompiler.exe: CMakeFiles/myCompiler.dir/linklibs.rsp
 myCompiler.exe: CMakeFiles/myCompiler.dir/objects1.rsp
 myCompiler.exe: CMakeFiles/myCompiler.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Workspace\GitHub\PL0-Compiler\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable myCompiler.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Workspace\GitHub\PL0-Compiler\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable myCompiler.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\myCompiler.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

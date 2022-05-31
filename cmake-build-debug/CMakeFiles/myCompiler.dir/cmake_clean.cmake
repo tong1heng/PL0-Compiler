@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/myCompiler.dir/compiler.cpp.obj"
   "CMakeFiles/myCompiler.dir/compiler.cpp.obj.d"
+  "CMakeFiles/myCompiler.dir/interpreter.cpp.obj"
+  "CMakeFiles/myCompiler.dir/interpreter.cpp.obj.d"
   "CMakeFiles/myCompiler.dir/lexical_analyzer.cpp.obj"
   "CMakeFiles/myCompiler.dir/lexical_analyzer.cpp.obj.d"
   "CMakeFiles/myCompiler.dir/main.cpp.obj"
@@ -11,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/myCompiler.dir/symbol_table.cpp.obj.d"
   "CMakeFiles/myCompiler.dir/syntax_analyzer.cpp.obj"
   "CMakeFiles/myCompiler.dir/syntax_analyzer.cpp.obj.d"
+  "CMakeFiles/myCompiler.dir/target_code.cpp.obj"
+  "CMakeFiles/myCompiler.dir/target_code.cpp.obj.d"
   "libmyCompiler.dll.a"
   "myCompiler.exe"
   "myCompiler.exe.manifest"
